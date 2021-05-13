@@ -17,6 +17,10 @@ class Operator: public Base {
             this->leftChild = leftChild;
             this->rightChild = rightChild;
         }
+	~Operator() : Base(){
+	    delete leftChild;
+            delete rightChild;
+	}
 };
 
 class Sub: public Operator {
