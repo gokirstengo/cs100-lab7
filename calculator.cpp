@@ -10,6 +10,8 @@ int main(int argc, char **argv) {
     if (tree) {
         cout << tree->stringify() << " = " << tree->evaluate() << endl;
     }
+    
+    delete tree;
 
     return 0;
 }
