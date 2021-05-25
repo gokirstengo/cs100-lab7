@@ -17,6 +17,18 @@ int main() {
     Base* eight = new Op(8);
     Base* sixteen = new Op(16);
     Base* one = new Op(1);
+    Base* threeFive = new Op(3.5);
+    Base* negThreeFive = new Op(-3.5);
+
+    Base* add4 = new Add(threeFive, seven);
+
+    Base* add5 = new Add(seven, negThreeFive);
+
+    Base* mult5 = new Mult(threeFive, eight);
+
+    Base* div4 = new Div(seven, threeFive);
+ 
+    Base* pow4 = new Pow(threeFive, two);
     
     Base* mult1 = new Mult(seven, four);
     Base* add1 = new Add(three, mult1);
@@ -36,7 +48,12 @@ int main() {
     Base* minus3 = new Sub(mult3, mult4);
     
     Base* add3 = new Add(pow3, seven);
-    
+       
+    cout << add4->stringify() << " = " << add4->evaluate() << endl;    
+    cout << add5->stringify() << " = " << add5->evaluate() << endl;
+    cout << mult5->stringify() << " = " << mult5->evaluate() << endl;
+    cout << div4->stringify() << " = " << div4->evaluate() << endl;
+    cout << pow4->stringify() << " = " << pow4->evaluate() << endl;
     cout << minus1->stringify() << " = " << minus1->evaluate() << endl;
     cout << div2->stringify() << " = " << div2->evaluate() << endl;
     cout << pow2->stringify() << " = " << pow2->evaluate() << endl;
