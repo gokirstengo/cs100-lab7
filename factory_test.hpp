@@ -6,6 +6,82 @@
 #include "op.hpp"
 #include "operator.hpp"
 
+TEST(FactoryTest, AddTest) {
+    char ** input = new char * [4];
+    input[0] = "filler";
+    input[1] = "3.5";
+    input[2] = "+";
+    input[3] = "7";
+
+    int size = 4;
+    Factory *f = new Factory();
+    Base *b = f->parse(input, size);
+
+    EXPECT_EQ(b->stringify(), "(3.500000 + 7)");
+    EXPECT_EQ(b->evaluate(), 10.5);
+}
+
+TEST(FactoryTest, MultTest) {
+    char ** input = new char * [4];
+    input[0] = "filler";
+    input[1] = "-3.5";
+    input[2] = "*";
+    input[3] = "8";
+
+    int size = 4;
+    Factory *f = new Factory();
+    Base *b = f->parse(input, size);
+
+    EXPECT_EQ(b->stringify(), "(-3.500000 * 8)");
+    EXPECT_EQ(b->evaluate(), -28);
+}
+
+TEST(FactoryTest, DivTest) {
+    char ** input = new char * [4];
+    input[0] = "filler";
+    input[1] = "7";
+    input[2] = "/";
+    input[3] = "3.5";
+
+    int size = 4;
+    Factory *f = new Factory();
+    Base *b = f->parse(input, size);
+
+    EXPECT_EQ(b->stringify(), "(7 / 3.500000)");
+    EXPECT_EQ(b->evaluate(), 2);
+}
+
+TEST(FactoryTest, PowTest) {
+    char ** input = new char * [4];
+    input[0] = "filler";
+    input[1] = "3.5";
+    input[2] = "**";
+    input[3] = "2";
+
+    int size = 4;
+    Factory *f = new Factory();
+    Base *b = f->parse(input, size);
+
+    EXPECT_EQ(b->stringify(), "(3.500000 ** 2)");
+    EXPECT_EQ(b->evaluate(), 12.25);
+}
+
+TEST(FactoryTest, SubTest) {
+    char ** input = new char * [4];
+    input[0] = "filler";
+    input[1] = "7";
+    input[2] = "-";
+    input[3] = "3.5";
+
+    int size = 4;
+    Factory *f = new Factory();
+    Base *b = f->parse(input, size);
+
+    EXPECT_EQ(b->stringify(), "(7 - 3.500000)");
+    EXPECT_EQ(b->evaluate(), 3.5);
+}
+
+
 TEST(FactoryTest, AddMultMinusTest) {
     char ** input = new char * [8];
     input[0] = "filler";
