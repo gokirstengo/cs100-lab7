@@ -61,24 +61,28 @@ private:
 
     int str_to_int(char* string) {
         unsigned size = strlen(string);
-        int result = 0;
+        bool isNum = true;
         bool neg_flag = false;
+        int decimalCounter = 0;
+
         for (unsigned i = 0; i < size; ++i) {
-            result *= 10;
             if (i == 0 && string[i] == '-') {
                 neg_flag = true;
             }
+            else if (string[i] == '.') {
+                decimalCounter += 1;
+            }
             else if (isdigit(string[i])) {
-                result += string[i] - '0';
+                isNum = true;
             }
             else {
                 throw(error(string, " is not a numeric operand"));
             }
+            if (decimalCounter > 1) {
+                throw(error(string, " is not a numeric operand"));
+            }
         }
-        if (neg_flag) {
-            result *= -1;
-        }
-        return result;
+        return stod(string);
     }
 public:
    Factory():base(0) {}
