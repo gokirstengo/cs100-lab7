@@ -59,7 +59,7 @@ private:
         return new_operator;
     }
 
-    int str_to_int(char* string) {
+    double str_to_int(char* string) {
         unsigned size = strlen(string);
         bool isNum = true;
         bool neg_flag = false;
